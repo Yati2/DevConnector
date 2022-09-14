@@ -101,6 +101,7 @@ router.post("/",
         //Create
         profile=new Profile(profileFields);
         await profile.save();
+    
 
     } catch (error) {
         console.error(error);
@@ -110,7 +111,20 @@ router.post("/",
 
 });
 
+//@route    GET api/profile
+//@desc     Get all profiles
+//@access   Public
 
+router.get("/",async(req,res)=>{
+    try {
+        const profiles= await Profile.find().populate("user",["name","avatar"]);
+        res.json(profiles);
+        
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Server Error");
+    }
+});
 
 
 module.exports = router;
