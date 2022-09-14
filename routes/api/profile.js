@@ -31,16 +31,82 @@ router.post("/",
     auth,
     [
         check("status","Status is required").not().isEmpty(),
-        check("skills","Skills is required").not().isEmpty
+        check("skills","Skills is required").not().isEmpty()
     ]
 ],
-async(req,res)=>
+    async(req,res)=>
 {
     const errors=validationResult(req);
+    console.log(errors.array());
     if(!errors.isEmpty)
     {
         return res.status(400).json({errors: errors.array()});
     }
+    
+    //destructure the request
+    const {
+        company,
+        website,
+        location,
+        bio,
+        status,
+        githubusername,
+        skills,
+        youtube,
+        facebook,
+        twitter,
+        instagram,
+        linkedin
+    }=req.body;
+
+    //Build profile object
+    const profileFields={
+        user : req.user.id,
+        company,
+        website,
+        location,
+        bio,
+        status,
+        githubusername
+    };
+    if(skills)
+    {
+        profileFields.skills=skills.split(",").map(skill => skill.trim());
+    
+    }
+
+    //Build social object
+    profileFields.social={
+        youtube,
+        twitter,
+        facebook,
+        linkedin,
+        instagram
+    };
+
+    try {
+        let profile= await Profile.findOne({user: req.user.id});
+        if(profile){
+
+            //Update
+            profile = await Profile.findOneAndUpdate(
+                {user: req.user.id},
+                {$set: profileFields},
+                {new : true});
+
+        return res.json(profile);
+        }
+
+
+        //Create
+        profile=new Profile(profileFields);
+        await profile.save();
+
+    } catch (error) {
+        console.error(error);
+        res.status(500).send("Server Error");
+    }
+   
 
 });
 
