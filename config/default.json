@@ -1,4 +1,7 @@
 {
   "mongoURL": "mongodb+srv://yati:ForJsNode1@devconnector.qqzuykb.mongodb.net/?retryWrites=true&w=majority",
-  "jwtSecret": "SecretToken"
+  "jwtSecret": "SecretToken",
+  "githubClientID":"81039d234efddb65e55f",
+  "githubSecret":"654832be03a4ddf31309787ddeaecbc37f0b4811"
+
 }
