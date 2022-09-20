@@ -12,7 +12,7 @@ module.exports=function(req,res,next){
         return res.status(401).json({msg : "No token, authorization denied"});
     }
     
-    console.log("x-auth-token: "+token);
+
 
     //Verify token
     try{
