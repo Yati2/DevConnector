@@ -1,13 +1,22 @@
 import React, { Fragment, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
+import PropTypes from "prop-types";
 import { connect } from "react-redux";
 import { login } from "../../actions/auth";
 
-const Login = ({ login }) => {
+const Login = ({ login, isAuthenticated }) => {
+  console.log("login");
+  console.log(
+    "🚀 ~ file: Login.js ~ line 8 ~ Login ~ isAuthenticated",
+    isAuthenticated
+  );
+  console.log("🚀 ~ file: Login.js ~ line 8 ~ Login ~ login", login);
+
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
+  console.log("🚀 ~ file: Login.js ~ line 18 ~ Login ~ formData", formData);
 
   const { email, password } = formData;
   const onChange = (e) =>
@@ -17,6 +26,12 @@ const Login = ({ login }) => {
 
     login({ email, password });
   };
+
+  //Navigate to dashboard
+  if (isAuthenticated) {
+    // debugger;
+    return <Navigate to="/dashboard" />;
+  }
 
   return (
     <Fragment>
@@ -55,8 +70,13 @@ const Login = ({ login }) => {
     </Fragment>
   );
 };
-
 Login.propTypes = {
-  register: PropTypes.func.isRequired,
+  login: PropTypes.func.isRequired,
+  isAuthenticated: PropTypes.bool.isRequired,
 };
-export default connect(null, { login })(Login);
+
+const mapStateToProps = (state) => ({
+  isAuthenticated: state.auth.isAuthenticated,
+});
+
+export default connect(mapStateToProps, { login })(Login);

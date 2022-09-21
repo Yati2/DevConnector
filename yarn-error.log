@@ -1,0 +1,63 @@
+Arguments: 
+  C:\Program Files\nodejs\node.exe C:\Users\intern\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js
+
+PATH: 
+  C:\Users\intern\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\local\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\usr\bin;C:\Program Files\Git\mingw64\bin;C:\Program Files\Git\usr\bin;C:\Users\intern\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\bin;C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v10.2\libnvvp;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0;C:\Windows\System32\OpenSSH;C:\Program Files (x86)\NVIDIA Corporation\PhysX\Common;C:\Program Files\CMake\bin;C:\Program Files\NVIDIA Corporation\Nsight Compute 2019.5.0;C:\Program Files\NVIDIA Corporation\NVIDIA NvDLISR;C:\AppData\Local\Programs\Python\Python38;C:\Program Files\Git\cmd;C:\Users\Hendricks\AppData\Roaming\nvm;C:\Program Files\nodejs;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\nodejs;C:\Users\intern\AppData\Local\Microsoft\WindowsApps;C:\Users\intern\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\intern\AppData\Roaming\npm;C:\Program Files\Git\usr\bin\vendor_perl;C:\Program Files\Git\usr\bin\core_perl
+
+Yarn version: 
+  1.22.19
+
+Node version: 
+  16.17.0
+
+Platform: 
+  win32 x64
+
+Trace: 
+  Error: ENOTEMPTY: directory not empty, rmdir 'C:\Users\intern\AppData\Local\Yarn\Cache\v6\npm-date-fns-2.29.3-27402d2fc67eb442b511b70bbdf98e6411cd68a8-integrity\node_modules\date-fns'
+
+npm manifest: 
+  {
+    "name": "devconnector",
+    "version": "1.0.0",
+    "description": "Social Network for developer",
+    "main": "server.js",
+    "scripts": {
+      "start": "node server",
+      "server": "nodemon server",
+      "client": "npm start --prefix client",
+      "dev": "concurrently \"npm run server\" \"npm run client\""
+    },
+    "author": "Yati",
+    "license": "MIT",
+    "dependencies": {
+      "@reduxjs/toolkit": "^1.8.5",
+      "bcryptjs": "^2.4.3",
+      "config": "^3.3.8",
+      "express": "^4.18.1",
+      "express-validator": "^6.14.2",
+      "gravatar": "^1.8.2",
+      "jsonwebtoken": "^8.5.1",
+      "mongoose": "^6.6.0",
+      "react": "^17.0.2",
+      "react-dom": "^17.0.2",
+      "react-redux": "^8.0.2",
+      "react-router-dom": "^6.4.0",
+      "react-scripts": "^5.0.1",
+      "redux": "^4.2.0",
+      "redux-devtools-extension": "^2.13.9",
+      "redux-thunk": "^2.4.1",
+      "request": "^2.88.2",
+      "uuid": "^9.0.0"
+    },
+    "devDependencies": {
+      "concurrently": "^7.4.0",
+      "nodemon": "^2.0.19"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile

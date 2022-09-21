@@ -72,7 +72,7 @@ router.post(
         (err, token) => {
           if (err) throw err;
           // console.log(token);
-          res.json({ token: token });
+          res.json({ token: token , user : user});
         }
       );
     } catch (err) {

@@ -5,6 +5,7 @@ import {
   AUTH_ERROR,
   LOGIN_FAIL,
   LOGIN_SUCCESS,
+  LOGOUT
 } from "./types";
 import axios from "axios";
 import { setAlert } from "./alert";
@@ -13,6 +14,7 @@ import setAuthToken from "../utils/setAuthToken";
 //Load User
 export const loadUser = () => async (dispatch) => {
   if (localStorage.token) setAuthToken(localStorage.token);
+  console.log("auth/action line 17, after setting token");
 
   try {
     const res = await axios.get("/api/auth");
@@ -72,7 +74,7 @@ export const login =
       },
     };
     try {
-      const res = await axios.post("/api/users", body, config);
+      const res = await axios.post("api/auth", body, config);
 
       dispatch({
         type: LOGIN_SUCCESS,
@@ -94,3 +96,9 @@ export const login =
       });
     }
   };
+
+  // Logout 
+
+export const logout = ()=> dispatch =>{
+  dispatch({type: LOGOUT});
+};
