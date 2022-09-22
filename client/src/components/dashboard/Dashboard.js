@@ -8,28 +8,21 @@ import { getCurrentProfile } from "../../actions/profile";
 // };
 
 const Dashboard = ({ getCurrentProfile, auth, profile }) => {
-  //   useEffect(() => {
-  //     getCurrentProfile();
-  //   }, [getCurrentProfile]);
+  useEffect(() => {
+    getCurrentProfile();
+  }, [getCurrentProfile]);
 
-  return (
-    <div>
-      Dashboard dsfsdjfsdlkfjkl
-      <code>
-        <pre>{JSON.stringify(getCurrentProfile, 2, null)}</pre>
-      </code>
-    </div>
-  );
+  return <div>Dashboard</div>;
 };
 
-// Dashboard.propTypes = {
-//   getCurrentProfile: PropTypes.func.isRequired,
-//   auth: PropTypes.object.isRequired,
-//   profile: PropTypes.object.isRequired,
-// };
+Dashboard.propTypes = {
+  getCurrentProfile: PropTypes.func.isRequired,
+  auth: PropTypes.object.isRequired,
+  profile: PropTypes.object.isRequired,
+};
 const mapStateToProps = (state) => ({
   auth: state.auth,
   profile: state.profile,
 });
 
-export default connect(mapStateToProps, getCurrentProfile)(Dashboard);
+export default connect(mapStateToProps, { getCurrentProfile })(Dashboard);
